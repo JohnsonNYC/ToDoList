@@ -26,12 +26,18 @@ yargs.command({
 })
 
 //Create Remove Command 
-
 yargs.command({
     command: 'remove',
     describe: 'Remove a note',
-    handler: function (){
-        console.log('removing a note!')
+    builder: {
+        title:{
+            describe: "Remove note with specific title",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: function (argv){
+        notes.removeNotes(argv.title)
     }
 })
 
@@ -45,15 +51,5 @@ yargs.command({
     }
 })
 
-//Create Remove Command 
-
-yargs.command({
-    command: 'read',
-    describe: 'read a note',
-    handler: function (){
-        console.log(chalk.bold.blue('read a note!'))
-    }
-})
-
 // add, remove, read, list notes 
-yargs.parse()
+yargs.parse() // return in JSON format? Review this 
