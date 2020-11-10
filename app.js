@@ -61,5 +61,20 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: 'read',
+    describe: 'read a note',
+    builder:{
+        title: {
+        describe: "Read note with specific title",
+        demandOption: true, 
+        type:'string'
+        }
+    },
+    handler(argv){
+        notes.readNote(argv.title)
+    }
+})
+
 // add, remove, read, list notes 
 yargs.parse() // return in JSON format? Review this 

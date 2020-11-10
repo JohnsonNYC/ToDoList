@@ -7,9 +7,11 @@ const getNotes = () => {
 
 const addNotes = (title, body) => {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter(notes => notes.title === title)
+    const duplicateNote = notes.find(notes => notes.title === title)
+    // removed filter as it traverses entire array
+    // added find method as it stops as soon as it hits a match
 
-    if (duplicateNotes.length === 0 ){
+    if (!duplicateNote){
         notes.push({
             title: title,
             body: body
@@ -58,11 +60,33 @@ const listNotes = () => {
     
 }
 
+const readNote = (title) => {
+    const notes = loadNotes();
+    const note = notes.find( note => note.title === title)
+
+    if(note){
+        console.log(chalk.green(note.title))
+        console.log(note.body)
+    }else{
+        console.log(chalk.red('No note found with that title'))
+    }
+}
+// Goal: wire up read command
+
+// 1. setup  --title option for read command 
+// 2. create readNote in node.js
+    // search for note by title
+    // find note and print title (styled) and body (plain)
+    // no note found? print err in red
+// 3. have the command handler call the function
+// 4. Test your work by running a couple of commands 
+
 module.exports = {
     getNotes: getNotes,
     addNotes: addNotes,
     removeNotes: removeNotes,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
 
 // STEPS
