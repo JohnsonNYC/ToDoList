@@ -19,7 +19,7 @@ const addNotes = (title, body) => {
     }
 }
 
-const saveNotes = (notes) =>{
+const saveNotes = (notes) =>{c
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
@@ -31,7 +31,7 @@ const loadNotes = () =>{
         return JSON.parse(dataJSON)
     }catch(e){
         return [] 
-    }
+    } 
 
 }
 
@@ -78,7 +78,6 @@ const readNote = (title) => {
 // 4. Test your work by running a couple of commands 
 
 module.exports = {
-    getNotes: getNotes,
     addNotes: addNotes,
     removeNotes: removeNotes,
     listNotes: listNotes,

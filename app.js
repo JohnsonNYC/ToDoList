@@ -1,16 +1,8 @@
 const chalk = require('chalk')
-const yargs = require('yargs') // What does this do again?
-const notes = require('./notes') // requiring another file, not a module
+const yargs = require('yargs') 
+const notes = require('./notes') 
 
-// Goal: Wire up list command
-//
-// Create and export listNotes from notes.js
-// "Your Notes" using chalk 
-// Print note title for each note
-// call listNotes from command handler 
-// Test your work
-
-
+// add, remove, read, list notes 
 // Yarg Version 
 yargs.version('1.1.0')
 //Create Add Command 
@@ -75,6 +67,3 @@ yargs.command({
         notes.readNote(argv.title)
     }
 })
-
-// add, remove, read, list notes 
-yargs.parse() // return in JSON format? Review this 
